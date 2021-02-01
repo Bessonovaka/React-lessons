@@ -1,32 +1,31 @@
 import './App.css';
-import Test from './Test';
-import Test2 from './Test2';
 import Header from './Header/Header';
-import Goods from './Goods';
+import About from './About/About';
+import Users from './Users/Users';
+import Main from './Main/Main';
+import UserId from './Users/UserId';
+import Error from './Error';
 
-const headerData = {
-  site_name: "site name",
-  nav: [
-    {"link": "nav1","text":"my link"},
-    {"link": "nav1","text":"my link2"},
-    {"link": "nav1","text":"my link3"},
-  ]
-};
-
-const goods = [
-  {"title" : "apple", "cost" : 330, "image":"http://www.coollady.ru/puc/5/frukt/CL-04.jpg"},
-  {"title" : "orange", "cost" : 530, "image":"https://ds04.infourok.ru/uploads/ex/0b2b/000fe9aa-42208a9b/hello_html_4cf454ef.png"},
-  {"title" : "peach", "cost" : 630, "image":"https://www.nastol.com.ua/download.php?img=201305/1680x1050/nastol.com.ua-48882.jpg"},
-]
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 function App() {
   return (
     <>
-      <Header data={headerData}/>
-      <Test />
-      <Test2 />
-      {goods.map( item => <Goods title={item.title} cost={item.cost} image={item.image}/>)}
-      
+      {/*<Header />*/}
+      <Router>
+        <nav>
+          <li><Link to="/">Main</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/users">Users</Link></li>
+        </nav>
+        <Switch>
+          <Route exact path="/" component={Main} />
+          <Route path="/about" component={About} />
+          <Route exact path="/users" component={Users} />
+          <Route path="/users/:userName" component={UserId} />
+          <Route component={Error} />
+        </Switch>
+      </Router>
     </>
   );
 }
