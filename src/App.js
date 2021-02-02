@@ -6,7 +6,7 @@ import Main from './Main/Main';
 import UserId from './Users/UserId';
 import Error from './Error';
 
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
 
 function App() {
   return (
@@ -14,9 +14,9 @@ function App() {
       {/*<Header />*/}
       <Router>
         <nav>
-          <li><Link to="/">Main</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/users">Users</Link></li>
+          <li><NavLink exact to="/" activeClassName="primer">Main</NavLink></li>
+          <li><NavLink to="/about">About</NavLink></li>
+          <li><NavLink to="/users">Users</NavLink></li>
         </nav>
         <Switch>
           <Route exact path="/" component={Main} />
