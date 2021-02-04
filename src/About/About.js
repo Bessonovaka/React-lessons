@@ -1,10 +1,12 @@
 import React from 'react';
+import {useState} from 'react';
 
 function About() {
 
   let a = 5;
   let textInput = React.createRef();
   let textOut = React.createRef();
+  const [output, setOutput] = useState('hello');
 
   function f1(arg) {
     console.log('f1 work ' + arg);
@@ -17,6 +19,7 @@ function About() {
     console.log(event.target.value);
     console.log(textInput.current.value);
     textOut.current.innerHTML = textInput.current.value;
+    setOutput(textInput.current.value);
   }
 
   return(
@@ -34,6 +37,7 @@ function About() {
         <h2>Input</h2>
         <input type="text" onInput = {showInput} ref = {textInput} defaultValue='hi' />
         <p ref={textOut}></p>
+        <h3>{output}</h3>
       </section>
     </>
   )

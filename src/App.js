@@ -14,8 +14,8 @@ function App() {
       {/*<Header />*/}
       <Router>
         <nav>
-          <li><NavLink exact to="/" activeClassName="primer">Main</NavLink></li>
-          <li><NavLink to="/about">About</NavLink></li>
+          <li><NavLink exact to="/" activeClassName="primer">State</NavLink></li>
+          <li><NavLink to="/about">События</NavLink></li>
           <li><NavLink to="/users">Users</NavLink></li>
         </nav>
         <Switch>
