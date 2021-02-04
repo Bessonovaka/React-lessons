@@ -1,9 +1,42 @@
+import React from 'react';
+
 function About() {
-        return(
-            <>
-              <h1>About</h1>  
-            </>
-        )
+
+  let a = 5;
+  let textInput = React.createRef();
+  let textOut = React.createRef();
+
+  function f1(arg) {
+    console.log('f1 work ' + arg);
+  };
+  function f2() {
+    console.log('move');
+  };
+  function showInput(event) {
+    console.log('input');
+    console.log(event.target.value);
+    console.log(textInput.current.value);
+    textOut.current.innerHTML = textInput.current.value;
+  }
+
+  return(
+    <>
+      <h1>События</h1>  
+      <section>
+        <h2>Button</h2>
+        <button onClick={()=>f1(5)}>Push</button>
+      </section>
+      <section>
+        <h2>Double click + mouse move</h2>
+        <div className="test" onDoubleClick = {()=>f1(2)} onMouseMove = {f2}></div>
+      </section>
+      <section>
+        <h2>Input</h2>
+        <input type="text" onInput = {showInput} ref = {textInput} defaultValue='hi' />
+        <p ref={textOut}></p>
+      </section>
+    </>
+  )
 }
 
 export default About;
